@@ -73,6 +73,15 @@ const MainNavigator =  createStackNavigator({
         backgroundColor: 'purple',
       }
     }),
+  },
+  AddCard: {
+    screen: AddCard,
+    navigationOptions: () => ({
+      title: 'Add A Card',
+      headerStyle: {
+        backgroundColor: 'purple',
+      }
+    }),
   }
 })
 

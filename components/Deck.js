@@ -13,12 +13,18 @@ export default class Deck extends React.Component {
     console.log('DOES IT EXIST? NAV: ', this.props.navigation.state)
   }
   render() {
-    const { deckTitle, deckLength } = this.props.navigation.state.params
+    const { navigation } = this.props
+    const { deckTitle, deckLength } = navigation.state.params
     return (
       <View style={styles.container}>
         <Text>{deckTitle}</Text>
         <Text>{deckLength} cards</Text>
-        <TouchableOpacity style={styles.button}>
+        <TouchableOpacity
+          style={styles.button}
+          onPress={() => navigation.navigate(
+            'AddCard',
+            { deckTitle, deckLength }
+        )}>
           <Text style={styles.buttonText}>
             Add Card
           </Text>

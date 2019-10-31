@@ -79,31 +79,6 @@ const styles = StyleSheet.create({
     borderColor: '#757575',
     margin: 50,
   },
-  iosSubmitBtn: {
-    backgroundColor: 'purple',
-    padding: 10,
-    borderRadius: 7,
-    height: 45,
-    marginLeft:  40,
-    marginRight: 40
-  },
-  androidSubmmitBtn: {
-    backgroundColor: 'purple',
-    padding: 10,
-    paddingLeft: 30,
-    paddingRight: 30,
-    height: 45,
-    borderRadius: 2,
-    alignSelf: 'flex-end',
-    justifyContent: 'center',
-    alignItems: 'center',
-    marginRight: 100
-  },
-  submitBtnText: {
-    color: 'white',
-    fontSize: 22,
-    textAlign: 'center'
-  }
 })
 
 export default connect()(AddDeck)

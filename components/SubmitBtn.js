@@ -32,4 +32,9 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     marginRight: 100
   },
+  submitBtnText: {
+    color: 'white',
+    fontSize: 22,
+    textAlign: 'center'
+  }
 })
