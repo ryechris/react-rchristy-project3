@@ -33,7 +33,14 @@ export function addDeck (deckTitle) {
   }))
 }
 
-
+export function addCard (deckTitle, questions) {
+  AsyncStorage.mergeItem(DECK_STORAGE_KEY, JSON.stringify({
+    [deckTitle]: {
+      title: deckTitle,
+      questions
+    }
+  }))
+}
 
 /*
 

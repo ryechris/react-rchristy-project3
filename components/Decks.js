@@ -44,13 +44,16 @@ class Decks extends React.Component {
       <SafeAreaView>
         <FlatList
           data={Object.keys(entries)}
-          renderItem={({item}) => (
-            <Item
-              navigation={this.props.navigation}
-              title={entries[item].title}
-              count={entries[item].questions.length}
-            />
-          )}
+          renderItem={({item}) => {
+            console.log('ITEM ITEM: ', item)
+            return (
+              <Item
+                navigation={this.props.navigation}
+                title={entries[item].title}
+                count={entries[item].questions.length}
+              />
+            )
+          }}
         />
       </SafeAreaView>
     )

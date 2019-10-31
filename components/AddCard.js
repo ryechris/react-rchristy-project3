@@ -6,34 +6,78 @@ import {
   TextInput,
   StyleSheet
 } from 'react-native'
+import { NavigationActions } from 'react-navigation'
 import { connect } from 'react-redux'
+import { updateEntry } from '../actions'
+import { addCard } from '../utils/api'
 import SubmitBtn from './SubmitBtn'
 
 class AddCard extends React.Component {
   state = {
-    input: ''
+    question: '',
+    answer: ''
   }
 
-  handleTextChange = (input) => {
+  handleTextChangeQ = (question) => {
     this.setState(() => ({
-      input
+      question
+    }))
+  }
+
+  handleTextChangeA = (answer) => {
+    this.setState(() => ({
+      answer
     }))
   }
 
   submit = () => {
+    const { navigation, entries } = this.props
+    const { deckTitle } = navigation.state.params
+    console.log('I. ENTRIES: ', entries)
+    entries[deckTitle].questions.push(this.state)
+    console.log('II. ENTRIES: ', entries)
+    const questions = entries[deckTitle].questions
+    console.log('III. ENTRIES: ', entries)
+    const update = { deckTitle, questions }
 
+    // update  Store
+    this.props.dispatch(updateEntry(update))
+
+    this.setState(() => ({
+      question: '',
+      answer:  ''
+    }))
+
+    // redirect back to Deck
+    this.toDeck()
+
+    // update the oatabase
+    addCard(deckTitle, questions)
   }
+
+  toDeck = () => {
+    this.props.navigation.dispatch(NavigationActions.back())
+  }
+
 
   render() {
     return (
-      <KeyboardAvoidingView behavior='padding' styles={styles.container}>
-        <Text>
-          What's the question?
-        </Text>
+      <KeyboardAvoidingView
+        style={styles.container}
+        behavior='padding'
+        enabled
+      >
+        <Text>What's the question?</Text>
         <TextInput
-          value={this.state.input}
+          value={this.state.question}
           style={styles.inpt}
-          onChangeText={this.handleTextChange}
+          onChangeText={this.handleTextChangeQ}
+        />
+        <Text>What's its answer?</Text>
+        <TextInput
+          value={this.state.answer}
+          style={styles.inpt}
+          onChangeText={this.handleTextChangeA}
         />
         <SubmitBtn onPress={this.submit} />
       </KeyboardAvoidingView>
@@ -59,4 +103,10 @@ const styles = StyleSheet.create({
   },
 })
 
-export default connect()(AddCard)
+function mapStateToProps(entries) {
+  return  {
+    entries
+  }
+}
+
+export default connect(mapStateToProps)(AddCard)
