@@ -13,16 +13,7 @@ import { addDeck } from '../utils/api'
 import { connect } from 'react-redux'
 import { addEntry } from '../actions'
 import { NavigationActions } from 'react-navigation'
-
-function SubmitBtn ({ onPress }) {
-  return (
-    <TouchableOpacity
-      style={  Platform.OS === 'ios' ? styles.iosSubmitBtn : styles.androidSubmmitBtn }
-      onPress={onPress}
-    ><Text style={styles.submitBtnText}>Submit</Text>
-    </TouchableOpacity>
-  )
-}
+import SubmitBtn from './SubmitBtn'
 
 class AddDeck extends React.Component {
   state = {

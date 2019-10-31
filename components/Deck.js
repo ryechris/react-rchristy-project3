@@ -17,7 +17,7 @@ export default class Deck extends React.Component {
     return (
       <View style={styles.container}>
         <Text>{deckTitle}</Text>
-        <Text>{deckLength}</Text>
+        <Text>{deckLength} cards</Text>
         <TouchableOpacity style={styles.button}>
           <Text style={styles.buttonText}>
             Add Card
@@ -26,6 +26,11 @@ export default class Deck extends React.Component {
         <TouchableOpacity style={styles.button}>
           <Text style={styles.buttonText}>
             Start Quiz
+          </Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.button}>
+          <Text style={styles.buttonText}>
+            Delete Deck
           </Text>
         </TouchableOpacity>
       </View>

@@ -6,23 +6,22 @@ import {
   TextInput,
   StyleSheet
 } from 'react-native'
+import SubmitBtn from './SubmitBtn'
 
 export default class AddCard extends React.Component {
   render() {
     return (
-      <View>
+      <KeyboardAvoidingView behavior='padding' styles={styles.container}>
+        <Text>
+          What will be the the name of your new deck?
+        </Text>
         <TextInput
-          style={{height: 40, backgroundColor: 'purple'}}
+          value={this.state.input}
+          style={styles.inpt}
+          onChangeText={this.handleTextChange}
         />
-        <TextInput
-          style={{height: 40, backgroundColor: 'gray'}}
-        />
-        <TouchableOpacity>
-          <Text>
-            Add Card
-          </Text>
-        </TouchableOpacity>
-      </View>
+        <SubmitBtn onPress={this.submit} />
+      </KeyboardAvoidingView>
     )
   }
 }
