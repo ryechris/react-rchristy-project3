@@ -57,7 +57,7 @@ export function deleteDeck (deckTitle) {
 
 export function clearLocalNotification() {
   return AsyncStorage.removeItem(NOTIFICATION_KEY)
-    .then(notifications.cancelAllScheduledNotificationsAsync)
+    .then(Notifications.cancelAllScheduledNotificationsAsync)
 }
 
 function createNotification() {
