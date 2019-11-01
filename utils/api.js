@@ -43,13 +43,11 @@ export function addCard (deckTitle, questions) {
 }
 
 export function deleteDeck (deckTitle) {
-  console.log('INSIDE DELETE DECK: ', deckTitle)
   return AsyncStorage.getItem(DECK_STORAGE_KEY)
     .then((results) => {
       const data = JSON.parse(results)
       data[deckTitle] = undefined
       delete data[deckTitle]
-      console.log('DEEP STATE: ', data)
       AsyncStorage.setItem(DECK_STORAGE_KEY, JSON.stringify(data))
     })
 }

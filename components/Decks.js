@@ -52,7 +52,7 @@ class Decks extends React.Component {
                 }
               )}>
                 <Text>{title}</Text>
-                <Text>{count}</Text>
+                <Text>{count} cards</Text>
               </TouchableOpacity>
             )
           }}

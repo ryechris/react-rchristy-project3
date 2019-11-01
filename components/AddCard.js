@@ -32,11 +32,8 @@ class AddCard extends React.Component {
   submit = () => {
     const { navigation, entries } = this.props
     const { deckTitle } = navigation.state.params
-    console.log('I. ENTRIES: ', entries)
     entries[deckTitle].questions.push(this.state)
-    console.log('II. ENTRIES: ', entries)
     const questions = entries[deckTitle].questions
-    console.log('III. ENTRIES: ', entries)
     const update = { deckTitle, questions }
 
     // update  Store

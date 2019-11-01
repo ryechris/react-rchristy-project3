@@ -21,14 +21,12 @@ class AddDeck extends React.Component {
   }
 
   handleTextChange = (input) => {
-    console.log('THIS IS THE INPUT', input)
     this.setState(() => ({
       input
     }))
   }
 
   submit = () => {
-    console.log('HEYLLO IN THE SUBMIT FUNCTION')
     const { input } = this.state
     this.props.dispatch(addEntry({
       [input]: {
