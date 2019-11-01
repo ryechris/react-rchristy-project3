@@ -46,7 +46,7 @@ class AddDeck extends React.Component {
 
   render() {
     return (
-      <KeyboardAvoidingView behavior='padding' styles={styles.container}>
+      <KeyboardAvoidingView behavior='padding' style={styles.container}>
         <Text>
           What will be the the name of your new deck?
         </Text>
@@ -65,8 +65,8 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: 'center',
-    justifyContent: 'center',
-    paddingTop: 25,
+    justifyContent: 'flex-start',
+    paddingTop: 120,
     backgroundColor: '#ecf0f1'
   },
   inpt: {
@@ -80,29 +80,3 @@ const styles = StyleSheet.create({
 })
 
 export default connect()(AddDeck)
-
-
-
-
-
-
-
-
-
-/*
-
-4. import { connect } from 'react-redux'
-import { addEntry }
-
-// pass the invocation of connect
-export default connect()(AddEntry)
-now AddEntry has access to dispatch
-this.props.dispatch
-
-this.props.dispatch(addEntry({
-  [key]: entry
-}))
-
-
-
-*/

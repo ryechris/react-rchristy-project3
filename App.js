@@ -48,7 +48,7 @@ const Tabs = createBottomTabNavigator({
     header: null
   },
   tabBarOptions: {
-    activeTintColor: Platform.OS === 'ios' ? '#757575' : '#202020',
+    activeTintColor: 'white',
     style: {
       height: 56,
       backgroundColor: Platform.OS === 'ios' ? '#202020' : '#757575',
@@ -71,6 +71,7 @@ const MainNavigator =  createStackNavigator({
     screen: Deck,
     navigationOptions: ({ navigation }) => ({
       title: `${navigation.state.params.deckTitle}`,
+      headerTintColor: 'white',
       headerStyle: {
         backgroundColor: 'purple',
       }
@@ -78,8 +79,10 @@ const MainNavigator =  createStackNavigator({
   },
   AddCard: {
     screen: AddCard,
+    headerTintColor: 'white',
     navigationOptions: () => ({
       title: 'Add A Card',
+      headerTintColor: 'white',
       headerStyle: {
         backgroundColor: 'purple',
       }
@@ -87,6 +90,13 @@ const MainNavigator =  createStackNavigator({
   },
   Quiz: {
     screen: Quiz,
+    navigationOptions: () => ({
+      title: 'Card',
+      headerTintColor: 'white',
+      headerStyle: {
+        backgroundColor: 'purple',
+      }
+    }),
   }
 })
 

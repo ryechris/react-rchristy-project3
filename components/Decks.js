@@ -35,7 +35,9 @@ class Decks extends React.Component {
   render() {
     const { entries, navigation } = this.props
     return (
-      <SafeAreaView>
+      <SafeAreaView style={styles.container}>
+        <Text style={styles.title}>Flash Cards</Text>
+        <Text style={styles.t2}>Deck List</Text>
         <FlatList
           data={Object.keys(entries)}
 
@@ -43,15 +45,15 @@ class Decks extends React.Component {
             const { title, questions } = entries[item]
             const count = questions.length
             return (
-              <TouchableOpacity onPress={() => navigation.navigate(
+              <TouchableOpacity style={styles.listItem} onPress={() => navigation.navigate(
                 'Deck',
                 { deckTitle: title,
                   deckLength: count,
                   updateDecks: this.updateState
                 }
               )}>
-                <Text>{title}</Text>
-                <Text>{count} cards</Text>
+                <Text style={styles.listTest}>{title}</Text>
+                <Text style={styles.listTest}>{count} cards</Text>
               </TouchableOpacity>
             )
           }}
@@ -65,7 +67,31 @@ class Decks extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'space-between'
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginTop: 30,
+    backgroundColor: '#ecf0f1'
+  },
+  title: {
+    textTransform: 'uppercase',
+    fontSize: 20
+  },
+  t2: {
+    marginBottom: 10
+  },
+  listItem: {
+    marginTop: 10,
+    marginBottom: 11,
+    borderColor: 'black',
+    borderWidth: 1,
+    width: 200,
+    height: 70
+
+  },
+  listTest: {
+    marginTop: 5,
+    marginBottom: 2,
+    marginLeft: 5
   },
   button: {
     padding: 10,

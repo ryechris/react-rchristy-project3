@@ -52,7 +52,7 @@ class Quiz extends React.Component {
     const { deckTitle, deckLength, updateDecks } = navigation.state.params
     if (deckLength === 0) {
       return (
-        <View>
+        <View style={styles.c2}>
           <Text>This deck has no cards. Click 'Add Card' to add some.</Text>
           <TouchableOpacity
             style={styles.button}
@@ -71,9 +71,9 @@ class Quiz extends React.Component {
     let { pos, showAnswer } = this.state
     if (pos >= deckLength) {
       return (
-        <View>
+        <View style={styles.container}>
           <Text>You scored {this.state.numCorrect} correct out of {deckLength} !</Text>
-          <TouchableOpacity onPress={this.reset}>
+          <TouchableOpacity style={{borderWidth: 1, borderColor: 'black', padding: 5}} onPress={this.reset}>
             <Text>Restart Quiz</Text>
           </TouchableOpacity>
           <TouchableOpacity
@@ -89,27 +89,29 @@ class Quiz extends React.Component {
     }
     let { question, answer } = questions[pos]
     return (
-      <View>
+      <View style={styles.container}>
         { showAnswer
-          ? <View>
-              <Text>{answer}</Text>
-              <TouchableOpacity onPress={this.toggleShowAnswer}>
+          ? <View style={styles.header}>
+              <Text style={styles.headerText}>{answer}</Text>
+              <TouchableOpacity style={styles.toggle} onPress={this.toggleShowAnswer}>
                 <Text>Show Question</Text>
               </TouchableOpacity>
             </View>
-          : <View>
-              <Text>{question}</Text>
-              <TouchableOpacity onPress={this.toggleShowAnswer}>
+          : <View style={styles.header}>
+              <Text style={styles.headerText}>{question}</Text>
+              <TouchableOpacity style={styles.toggle} onPress={this.toggleShowAnswer}>
                 <Text>Show Answer</Text>
               </TouchableOpacity>
             </View>
         }
-        <TouchableOpacity onPress={this.addCorrect}>
-          <Text>Correct</Text>
-        </TouchableOpacity>
-        <TouchableOpacity onPress={this.addIncorrect}>
-          <Text>Incorrect</Text>
-        </TouchableOpacity>
+        <View>
+          <TouchableOpacity style={styles.correct} onPress={this.addCorrect}>
+            <Text style={styles.buttonText}>Correct</Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.incorrect} onPress={this.addIncorrect}>
+            <Text style={styles.buttonText}>Incorrect</Text>
+          </TouchableOpacity>
+        </View>
         <Text>Number of Questions remaining: X</Text>
       </View>
     )
@@ -127,17 +129,55 @@ export default connect(mapStateToProps)(Quiz)
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'space-between'
+    justifyContent: 'space-around',
+    alignItems: 'center'
+  },
+  c2: {
+    flex: 1,
+    justifyContent: 'flex-start',
+    alignItems: 'center',
+    marginTop: 55,
+  },
+  header: {
+    flex: 1,
+    marginTop: 20,
+    maxHeight: 50,
+    alignItems: 'center'
+  },
+  headerText: {
+    fontSize: 30,
+    marginBottom: 10
+  },
+  toggle: {
+    borderWidth: 1,
+    borderColor: 'black',
+  },
+  correct: {
+    padding: 10,
+    backgroundColor: 'green',
+    alignSelf: 'center',
+    alignItems: 'center',
+    borderRadius: 5,
+    marginBottom: 10,
+    width: 100
+  },
+  incorrect: {
+    padding: 10,
+    backgroundColor: 'blue',
+    alignSelf: 'center',
+    alignItems: 'center',
+    borderRadius: 5,
+    width: 100
+  },
+  buttonText: {
+    color: 'white',
+    fontSize: 20
   },
   button: {
     padding: 10,
     backgroundColor: 'purple',
     alignSelf: 'center',
     borderRadius: 5,
-    margin: 20
+    margin: 30
   },
-  buttonText: {
-    color: 'white',
-    fontSize: 20
-  }
 })
