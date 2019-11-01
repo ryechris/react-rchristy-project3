@@ -12,7 +12,6 @@ import { connect } from 'react-redux'
 import { receiveEntries } from '../actions'
 import { createStackNavigator } from 'react-navigation-stack'
 import { NavigationActions } from 'react-navigation'
-import Deck from './Deck'
 
 class Decks extends React.Component {
   state = {
@@ -40,6 +39,7 @@ class Decks extends React.Component {
       <SafeAreaView>
         <FlatList
           data={Object.keys(entries)}
+
           renderItem={({item}) => {
             const { title, questions } = entries[item]
             const count = questions.length
@@ -56,11 +56,13 @@ class Decks extends React.Component {
               </TouchableOpacity>
             )
           }}
+          keyExtractor={(item, index) => index.toString()}
         />
       </SafeAreaView>
     )
   }
 }
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,

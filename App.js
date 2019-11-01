@@ -83,6 +83,9 @@ const MainNavigator =  createStackNavigator({
         backgroundColor: 'purple',
       }
     }),
+  },
+  Quiz: {
+    screen: Quiz,
   }
 })
 
@@ -94,7 +97,7 @@ export default class App extends Component {
       <Provider store={createStore(reducer)}>
         <View style={{flex: 1}}>
           <FcStatusBar backgroundColor={'purple'} barStyle='light-content' />
-          <Quiz />
+          <AppContainer />
         </View>
       </Provider>
     )

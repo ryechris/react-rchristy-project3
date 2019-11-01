@@ -32,7 +32,7 @@ class Deck extends React.Component {
           style={styles.button}
           onPress={() => navigation.navigate(
             'Quiz',
-            { deckTitle, deckLength }
+            { deckTitle, deckLength, updateDecks }
           )}
         >
           <Text style={styles.buttonText}>
