@@ -18,6 +18,7 @@ import { Provider } from 'react-redux'
 import { createStore } from 'redux'
 import reducer from './reducers'
 import Quiz from './components/Quiz'
+import { setLocalNotification } from './utils/api'
 
 function FcStatusBar ({ backgroundColor, ...props })  {
   return (
@@ -92,6 +93,9 @@ const MainNavigator =  createStackNavigator({
 const AppContainer =  createAppContainer(MainNavigator)
 
 export default class App extends Component {
+  componentDidMount () {
+    setLocalNotification()
+  }
   render() {
     return (
       <Provider store={createStore(reducer)}>

@@ -11,7 +11,6 @@ import { fetchDecks } from '../utils/api'
 import { connect } from 'react-redux'
 import { receiveEntries } from '../actions'
 import { createStackNavigator } from 'react-navigation-stack'
-import { NavigationActions } from 'react-navigation'
 
 class Decks extends React.Component {
   state = {

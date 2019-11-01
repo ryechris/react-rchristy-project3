@@ -7,27 +7,19 @@ import {
   StyleSheet
 } from 'react-native'
 import { connect } from 'react-redux'
-
+import { clearLocalNotification, setLocalNotification } from '../utils/api'
 
 class Quiz extends React.Component {
+  componentDidMount() {
+    clearLocalNotification()
+      .then(setLocalNotification);
+  }
   state = {
     pos: 0,
     showAnswer: false,
     numCorrect: 0,
     numIncorrect: 0
   }
-
-  /*
-  You have deckTitle and deckLength from props or from navstate params.
-  const { navigation, entries } = this.props
-  const { deckTitle, deckLength } = navigation.state.params
-  const { questions } = entries[deckTitle]
-  questions = [{question, answer}]
-  const { question, answer } = questions[x] where x = this.state.x
-  if {pos} doesn't work, use this.state.pos
-
-  {date && <DateHeader date={date} />}
-  */
 
   addCorrect = () => {
     this.setState((state) => ({
