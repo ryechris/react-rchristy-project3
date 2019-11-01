@@ -5,16 +5,18 @@ import {
   TouchableOpacity,
   StyleSheet
 } from 'react-native'
-import { createStackNavigator } from 'react-navigation-stack'
-import { NavigationActions } from 'react-navigation'
+import { connect } from 'react-redux'
+import { fetchDecks, deleteDeck } from '../utils/api'
+import { receiveEntries, deleteEntry } from '../actions'
+import Decks from './Decks'
 
-export default class Deck extends React.Component {
+class Deck extends React.Component {
   componentDidMount() {
-    console.log('DOES IT EXIST? NAV: ', this.props.navigation.state)
+    console.log('THIS.PROPS.NAV.STATE: ', this.props.navigation.state)
   }
   render() {
-    const { navigation } = this.props
-    const { deckTitle, deckLength } = navigation.state.params
+    const { navigation, dispatch } = this.props
+    const { deckTitle, deckLength, updateDecks } = navigation.state.params
     return (
       <View style={styles.container}>
         <Text>{deckTitle}</Text>
@@ -34,7 +36,15 @@ export default class Deck extends React.Component {
             Start Quiz
           </Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.button}>
+        <TouchableOpacity
+          style={styles.button}
+          onPress={() => {
+            dispatch(deleteEntry(deckTitle));
+            deleteDeck(deckTitle);
+            updateDecks();
+            navigation.navigate('Decks');
+          }}
+        >
           <Text style={styles.buttonText}>
             Delete Deck
           </Text>
@@ -43,6 +53,8 @@ export default class Deck extends React.Component {
     )
   }
 }
+
+export default connect()(Deck)
 
 const styles = StyleSheet.create({
   container: {

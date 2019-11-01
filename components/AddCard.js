@@ -6,7 +6,6 @@ import {
   TextInput,
   StyleSheet
 } from 'react-native'
-import { NavigationActions } from 'react-navigation'
 import { connect } from 'react-redux'
 import { updateEntry } from '../actions'
 import { addCard } from '../utils/api'
@@ -49,16 +48,26 @@ class AddCard extends React.Component {
     }))
 
     // redirect back to Deck
-    this.toDeck()
+    this.toDeck(deckTitle, questions.length)
 
     // update the oatabase
     addCard(deckTitle, questions)
   }
 
+  // we use navigate's back feature here, but I've opted to use this one
+  // so we can pass props and update the Deck screen asap.
+  toDeck = (title, count) => {
+    this.props.navigation.navigate(
+      'Deck',
+      { deckTitle: title, deckLength: count }
+    )
+  }
+  /* This implementation would use navigate's back feature
+  import { NavigationActions } from 'react-navigation'
   toDeck = () => {
     this.props.navigation.dispatch(NavigationActions.back())
   }
-
+  */
 
   render() {
     return (

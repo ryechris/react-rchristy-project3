@@ -1,4 +1,8 @@
-import { RECEIVE_ENTRIES, ADD_ENTRY, UPDATE_ENTRY } from '../actions'
+import {
+  RECEIVE_ENTRIES,
+  ADD_ENTRY,
+  UPDATE_ENTRY,
+  DELETE_ENTRY } from '../actions'
 
 function entries (state = {}, action) {
   switch (action.type) {
@@ -32,53 +36,14 @@ function entries (state = {}, action) {
           questions
         }
       }
+    case DELETE_ENTRY :
+      state[action.deckTitle] = undefined
+      delete state[action.deckTitle]
+      console.log('THE NEW STATE: ', state)
+      return state
     default :
       return state
   }
 }
 
 export default entries
-
-
-/*
-
-let x = {
-  a: {
-    questions: [],
-    title: 'abc',
-  },
-  b: {
-    questions: [],
-    title: 'bcd',
-  },
-  c: {
-    questions: [],
-    title: 'cde',
-  },
-  d: {
-    questions: [],
-    title: 'def',
-  },
-}
-
-const y = {
-  e: {
-    questions: [],
-    title: 'efg'
-  }
-}
-
-x = {...x, ...y}
-
-
-const ef = 'e'
-
-x = {
-  ...x,
-  [ef]: {
-    ...ef,
-    questions: [{hello: 'hi'}],
-  }
-}
-
- */

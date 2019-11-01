@@ -83,6 +83,14 @@ const styles = StyleSheet.create({
 
 export default connect()(AddDeck)
 
+
+
+
+
+
+
+
+
 /*
 
 4. import { connect } from 'react-redux'
