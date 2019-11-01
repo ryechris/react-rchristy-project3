@@ -80,7 +80,6 @@ const styles = StyleSheet.create({
 })
 
 function mapStateToProps(entries) {
-  console.log('III. ENTRIES ENTRIES LOOKIE LOOKIE: ', entries)
   return  {
     entries
   }

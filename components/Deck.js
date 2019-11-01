@@ -11,9 +11,6 @@ import { receiveEntries, deleteEntry } from '../actions'
 import Decks from './Decks'
 
 class Deck extends React.Component {
-  componentDidMount() {
-    console.log('THIS.PROPS.NAV.STATE: ', this.props.navigation.state)
-  }
   render() {
     const { navigation, dispatch } = this.props
     const { deckTitle, deckLength, updateDecks } = navigation.state.params
@@ -31,7 +28,13 @@ class Deck extends React.Component {
             Add Card
           </Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.button}>
+        <TouchableOpacity
+          style={styles.button}
+          onPress={() => navigation.navigate(
+            'Quiz',
+            { deckTitle, deckLength }
+          )}
+        >
           <Text style={styles.buttonText}>
             Start Quiz
           </Text>
@@ -73,22 +76,3 @@ const styles = StyleSheet.create({
     fontSize: 20
   }
 })
-
-
-
-
-
-
-/*
-
-You might want to put the two buttons in one view so tht you can put them together in the bottom.
-
-function UdaciStatusBar ({backgroundColor, ...props}) {
-  return (
-    <View style={{ backgroundColor, height: Constants.statusBarHeight }}>
-      <StatusBar translucent backgroundColor={backgroundColor} {...props} />
-    </View>
-  )
-}
-
- */

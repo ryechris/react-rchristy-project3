@@ -6,28 +6,44 @@ import {
   TextInput,
   StyleSheet
 } from 'react-native'
+import { connect } from 'react-redux'
 
-export default class Quiz extends React.Component {
+
+class Quiz extends React.Component {
+  state = {
+    count: 0
+  }
+
+You have deckTitle and deckLength from props or from navstate params.
+const { deckTitle, deckLength } = XXX.
+const { questions } = entries[deckTitle]
+questions = [{question, answer}]
+const { question, answer } = questions[x] where x = this.state.x
+
+
   render() {
     return (
       <View>
-        <TextInput
-          style={{height: 40, backgroundColor: 'purple'}}
-        />
-        <TextInput
-          style={{height: 40, backgroundColor: 'gray'}}
-        />
+        <Text>[Quiz Question here]</Text>
         <TouchableOpacity>
-          <Text>
-            Correct
-          </Text>
+          <Text>Show Answer</Text>
         </TouchableOpacity>
         <TouchableOpacity>
-          <Text>
-            Incorrect
-          </Text>
+          <Text>Correct</Text>
         </TouchableOpacity>
+        <TouchableOpacity>
+          <Text>Incorrect</Text>
+        </TouchableOpacity>
+        <Text>Number of Questions remaining: X</Text>
       </View>
     )
   }
 }
+
+function mapStateToProps(entries) {
+  return  {
+    entries
+  }
+}
+
+export default connect()(Quiz)

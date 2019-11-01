@@ -17,6 +17,7 @@ import Constants from 'expo-constants'
 import { Provider } from 'react-redux'
 import { createStore } from 'redux'
 import reducer from './reducers'
+import Quiz from './components/Quiz'
 
 function FcStatusBar ({ backgroundColor, ...props })  {
   return (
@@ -93,7 +94,7 @@ export default class App extends Component {
       <Provider store={createStore(reducer)}>
         <View style={{flex: 1}}>
           <FcStatusBar backgroundColor={'purple'} barStyle='light-content' />
-          <AppContainer />
+          <Quiz />
         </View>
       </Provider>
     )
