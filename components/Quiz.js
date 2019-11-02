@@ -18,20 +18,23 @@ class Quiz extends React.Component {
     pos: 0,
     showAnswer: false,
     numCorrect: 0,
-    numIncorrect: 0
+    numIncorrect: 0,
+    remaining: this.props.navigation.state.params.deckLength
   }
 
   addCorrect = () => {
     this.setState((state) => ({
       numCorrect: state.numCorrect + 1,
-      pos: state.pos + 1
+      pos: state.pos + 1,
+      remaining: state.remaining - 1
     }))
   }
 
   addIncorrect = () => {
     this.setState((state) => ({
       numIncorrect: state.numIncorrect + 1,
-      pos: state.pos + 1
+      pos: state.pos + 1,
+      remaining: state.remaining - 1
     }))
   }
 
@@ -43,7 +46,8 @@ class Quiz extends React.Component {
 
   reset = () => {
     this.setState(() => ({
-      pos: 0
+      pos: 0,
+      remaining: this.props.navigation.state.params.deckLength
     }))
   }
 
@@ -68,7 +72,7 @@ class Quiz extends React.Component {
       )
     }
     const { questions } = entries[deckTitle]
-    let { pos, showAnswer } = this.state
+    let { pos, showAnswer, remaining } = this.state
     if (pos >= deckLength) {
       return (
         <View style={styles.container}>
@@ -112,7 +116,7 @@ class Quiz extends React.Component {
             <Text style={styles.buttonText}>Incorrect</Text>
           </TouchableOpacity>
         </View>
-        <Text>Number of Questions remaining: X</Text>
+        <Text>Number of Questions remaining: {remaining}</Text>
       </View>
     )
   }
