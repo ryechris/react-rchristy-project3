@@ -35,13 +35,14 @@ class AddDeck extends React.Component {
       }
     }))
     addDeck(input)
-    this.toHome()
+    this.toNewDeck(input)
   }
 
-  toHome = () => {
-    this.props.navigation.dispatch(NavigationActions.back({
-      key: 'AddDeck'
-    }))
+  toNewDeck = (input) => {
+    this.props.navigation.navigate(
+      'Deck',
+      { deckTitle: input, deckLength: 0 }
+    )
   }
 
   render() {
