@@ -8,54 +8,50 @@ import {
 import { connect } from 'react-redux'
 import { fetchDecks, deleteDeck } from '../utils/api'
 import { receiveEntries, deleteEntry } from '../actions'
-import Decks from './Decks'
 
-class Deck extends React.Component {
-  render() {
-    const { navigation, dispatch } = this.props
-    const { deckTitle, deckLength, updateDecks } = navigation.state.params
-    return (
-      <View style={styles.container}>
-        <View style={styles.c2}>
-          <Text style={styles.title}>{deckTitle}</Text>
-          <Text style={styles.t2}>{deckLength} cards</Text>
-        </View>
-        <TouchableOpacity
-          style={styles.button}
-          onPress={() => navigation.navigate(
-            'AddCard',
-            { deckTitle, deckLength }
-        )}>
-          <Text style={styles.buttonText}>
-            Add Card
-          </Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          style={styles.button}
-          onPress={() => navigation.navigate(
-            'Quiz',
-            { deckTitle, deckLength, updateDecks }
-          )}
-        >
-          <Text style={styles.buttonText}>
-            Start Quiz
-          </Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          onPress={() => {
-            dispatch(deleteEntry(deckTitle));
-            deleteDeck(deckTitle);
-            updateDecks();
-            navigation.navigate('Decks');
-          }}
-        >
-          <Text style={styles.btnText}>
-            Delete Deck
-          </Text>
-        </TouchableOpacity>
+const Deck = ({ navigation, dispatch }) => {
+  const { deckTitle, deckLength, updateDecks } = navigation.state.params
+  return (
+    <View style={styles.container}>
+      <View style={styles.c2}>
+        <Text style={styles.title}>{deckTitle}</Text>
+        <Text style={styles.t2}>{deckLength} cards</Text>
       </View>
-    )
-  }
+      <TouchableOpacity
+        style={styles.button}
+        onPress={() => navigation.navigate(
+          'AddCard',
+          { deckTitle, deckLength }
+      )}>
+        <Text style={styles.buttonText}>
+          Add Card
+        </Text>
+      </TouchableOpacity>
+      <TouchableOpacity
+        style={styles.button}
+        onPress={() => navigation.navigate(
+          'Quiz',
+          { deckTitle, deckLength, updateDecks }
+        )}
+      >
+        <Text style={styles.buttonText}>
+          Start Quiz
+        </Text>
+      </TouchableOpacity>
+      <TouchableOpacity
+        onPress={() => {
+          dispatch(deleteEntry(deckTitle));
+          deleteDeck(deckTitle);
+          updateDecks();
+          navigation.navigate('Decks');
+        }}
+      >
+        <Text style={styles.btnText}>
+          Delete Deck
+        </Text>
+      </TouchableOpacity>
+    </View>
+  )
 }
 
 export default connect()(Deck)
