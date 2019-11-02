@@ -30,6 +30,9 @@ class AddCard extends React.Component {
   }
 
   submit = () => {
+    if (this.state.question === '' || this.state.answer ===  '') {
+      return alert("Form fields can't be sent as empty")
+    }
     const { navigation, entries } = this.props
     const { deckTitle } = navigation.state.params
     entries[deckTitle].questions.push(this.state)
@@ -91,6 +94,10 @@ class AddCard extends React.Component {
   }
 }
 
+mapStateToProps = (entries) => ({entries})
+
+export default connect(mapStateToProps)(AddCard)
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -108,11 +115,3 @@ const styles = StyleSheet.create({
     margin: 50,
   },
 })
-
-function mapStateToProps(entries) {
-  return  {
-    entries
-  }
-}
-
-export default connect(mapStateToProps)(AddCard)

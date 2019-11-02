@@ -64,6 +64,10 @@ class Decks extends React.Component {
   }
 }
 
+mapStateToProps = (entries) => ({entries})
+
+export default connect(mapStateToProps)(Decks)
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -105,10 +109,3 @@ const styles = StyleSheet.create({
     fontSize: 20
   }
 })
-
-function mapStateToProps(entries) {
-  return  {
-    entries
-  }
-}
-export default connect(mapStateToProps)(Decks)

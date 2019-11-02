@@ -5,24 +5,24 @@ import {
   Text,
   View,
   StatusBar } from 'react-native';
-import Deck from './components/Deck'
-import Decks from './components/Decks'
-import AddDeck from './components/AddDeck'
 import AddCard from './components/AddCard'
+import AddDeck from './components/AddDeck'
+import Decks from './components/Decks'
+import Deck from './components/Deck'
+import Quiz from './components/Quiz'
 import { createAppContainer } from 'react-navigation'
 import { createStackNavigator } from 'react-navigation-stack'
 import { createBottomTabNavigator } from 'react-navigation-tabs'
 import { FontAwesome, Ionicons } from '@expo/vector-icons'
-import Constants from 'expo-constants'
 import { Provider } from 'react-redux'
 import { createStore } from 'redux'
-import reducer from './reducers'
-import Quiz from './components/Quiz'
 import { setLocalNotification } from './utils/api'
+import reducer from './reducers'
+import Constants from 'expo-constants'
 
 function FcStatusBar ({ backgroundColor, ...props })  {
   return (
-    <View style={{backgroundColor, height: Constants.statusBarHeight}}>
+    <View style={styles.statusView}>
       <StatusBar translucent backgroundColor={backgroundColor} {...props} />
     </View>
   )
@@ -135,4 +135,8 @@ const styles = StyleSheet.create({
     color: '#333333',
     marginBottom: 5,
   },
+  statusView: {
+    backgroundColor: 'purple',
+    height: Constants.statusBarHeight
+  }
 });

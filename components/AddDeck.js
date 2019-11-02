@@ -28,6 +28,9 @@ class AddDeck extends React.Component {
 
   submit = () => {
     const { input } = this.state
+    if (input === '') {
+      return alert("Form fields can't be sent as empty")
+    }
     this.props.dispatch(addEntry({
       [input]: {
         title: input,
@@ -62,6 +65,8 @@ class AddDeck extends React.Component {
   }
 }
 
+export default connect()(AddDeck)
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -79,5 +84,3 @@ const styles = StyleSheet.create({
     margin: 50,
   },
 })
-
-export default connect()(AddDeck)

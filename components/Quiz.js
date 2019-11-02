@@ -122,11 +122,7 @@ class Quiz extends React.Component {
   }
 }
 
-function mapStateToProps(entries) {
-  return  {
-    entries
-  }
-}
+mapStateToProps = (entries) => ({entries})
 
 export default connect(mapStateToProps)(Quiz)
 
