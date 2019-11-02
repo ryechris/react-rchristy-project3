@@ -10,6 +10,7 @@ import { connect } from 'react-redux'
 import { updateEntry } from '../actions'
 import { addCard } from '../utils/api'
 import SubmitBtn from './SubmitBtn'
+import { bgClr, gray } from '../utils/colors'
 
 class AddCard extends React.Component {
   state = {
@@ -104,14 +105,14 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     paddingTop: 25,
-    backgroundColor: '#ecf0f1'
+    backgroundColor: bgClr
   },
   inpt: {
     width: 200,
     height: 44,
     padding: 8,
     borderWidth: 1,
-    borderColor: '#757575',
+    borderColor: gray,
     margin: 50,
   },
 })

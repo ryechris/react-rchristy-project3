@@ -14,6 +14,7 @@ import { connect } from 'react-redux'
 import { addEntry } from '../actions'
 import { NavigationActions } from 'react-navigation'
 import SubmitBtn from './SubmitBtn'
+import { bgClr, gray } from '../utils/colors'
 
 class AddDeck extends React.Component {
   state = {
@@ -73,14 +74,14 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'flex-start',
     paddingTop: 120,
-    backgroundColor: '#ecf0f1'
+    backgroundColor: bgClr
   },
   inpt: {
     width: 200,
     height: 44,
     padding: 8,
     borderWidth: 1,
-    borderColor: '#757575',
+    borderColor: gray,
     margin: 50,
   },
 })

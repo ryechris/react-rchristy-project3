@@ -19,6 +19,8 @@ import { createStore } from 'redux'
 import { setLocalNotification } from './utils/api'
 import reducer from './reducers'
 import Constants from 'expo-constants'
+import { white, purple, gray, blk } from './utils/colors'
+
 
 function FcStatusBar ({ backgroundColor, ...props })  {
   return (
@@ -48,10 +50,10 @@ const Tabs = createBottomTabNavigator({
     header: null
   },
   tabBarOptions: {
-    activeTintColor: 'white',
+    activeTintColor: white,
     style: {
       height: 56,
-      backgroundColor: Platform.OS === 'ios' ? '#202020' : '#757575',
+      backgroundColor: Platform.OS === 'ios' ? blk : gray,
       shadowColor: 'rgba(0,0,0,0.24)',
       shadowOffset: {
         width: 0,
@@ -71,20 +73,20 @@ const MainNavigator =  createStackNavigator({
     screen: Deck,
     navigationOptions: ({ navigation }) => ({
       title: `${navigation.state.params.deckTitle}`,
-      headerTintColor: 'white',
+      headerTintColor: white,
       headerStyle: {
-        backgroundColor: 'purple',
+        backgroundColor: purple,
       }
     }),
   },
   AddCard: {
     screen: AddCard,
-    headerTintColor: 'white',
+    headerTintColor: white,
     navigationOptions: () => ({
       title: 'Add A Card',
-      headerTintColor: 'white',
+      headerTintColor: white,
       headerStyle: {
-        backgroundColor: 'purple',
+        backgroundColor: purple,
       }
     }),
   },
@@ -92,9 +94,9 @@ const MainNavigator =  createStackNavigator({
     screen: Quiz,
     navigationOptions: () => ({
       title: 'Card',
-      headerTintColor: 'white',
+      headerTintColor: white,
       headerStyle: {
-        backgroundColor: 'purple',
+        backgroundColor: purple,
       }
     }),
   }
@@ -110,7 +112,7 @@ export default class App extends Component {
     return (
       <Provider store={createStore(reducer)}>
         <View style={{flex: 1}}>
-          <FcStatusBar backgroundColor={'purple'} barStyle='light-content' />
+          <FcStatusBar backgroundColor={purple} barStyle='light-content' />
           <AppContainer />
         </View>
       </Provider>
@@ -123,20 +125,10 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#fff',
-  },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
-  },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
+    backgroundColor: white,
   },
   statusView: {
-    backgroundColor: 'purple',
+    backgroundColor: purple,
     height: Constants.statusBarHeight
   }
 });

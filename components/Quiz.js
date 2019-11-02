@@ -8,6 +8,8 @@ import {
 } from 'react-native'
 import { connect } from 'react-redux'
 import { clearLocalNotification, setLocalNotification } from '../utils/api'
+import { black, white, green, blue, purple } from '../utils/colors'
+
 
 class Quiz extends React.Component {
   componentDidMount() {
@@ -77,7 +79,7 @@ class Quiz extends React.Component {
       return (
         <View style={styles.container}>
           <Text>You scored {this.state.numCorrect} correct out of {deckLength} !</Text>
-          <TouchableOpacity style={{borderWidth: 1, borderColor: 'black', padding: 5}} onPress={this.reset}>
+          <TouchableOpacity style={styles.quizEnd} onPress={this.reset}>
             <Text>Restart Quiz</Text>
           </TouchableOpacity>
           <TouchableOpacity
@@ -150,11 +152,11 @@ const styles = StyleSheet.create({
   },
   toggle: {
     borderWidth: 1,
-    borderColor: 'black',
+    borderColor: black,
   },
   correct: {
     padding: 10,
-    backgroundColor: 'green',
+    backgroundColor: green,
     alignSelf: 'center',
     alignItems: 'center',
     borderRadius: 5,
@@ -163,21 +165,25 @@ const styles = StyleSheet.create({
   },
   incorrect: {
     padding: 10,
-    backgroundColor: 'blue',
+    backgroundColor: blue,
     alignSelf: 'center',
     alignItems: 'center',
     borderRadius: 5,
     width: 100
   },
   buttonText: {
-    color: 'white',
+    color: white,
     fontSize: 20
   },
   button: {
     padding: 10,
-    backgroundColor: 'purple',
+    backgroundColor: purple,
     alignSelf: 'center',
     borderRadius: 5,
     margin: 30
   },
+  quizEnd: {
+    borderWidth: 1,
+    borderColor: black,
+    padding: 5}
 })

@@ -11,6 +11,7 @@ import { fetchDecks } from '../utils/api'
 import { connect } from 'react-redux'
 import { receiveEntries } from '../actions'
 import { createStackNavigator } from 'react-navigation-stack'
+import { bgClr, black, purple, white } from '../utils/colors'
 
 class Decks extends React.Component {
   state = {
@@ -73,8 +74,8 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    marginTop: 30,
-    backgroundColor: '#ecf0f1'
+    paddingTop: 25,
+    backgroundColor: bgClr
   },
   title: {
     textTransform: 'uppercase',
@@ -86,7 +87,7 @@ const styles = StyleSheet.create({
   listItem: {
     marginTop: 10,
     marginBottom: 11,
-    borderColor: 'black',
+    borderColor: black,
     borderWidth: 1,
     width: 200,
     height: 70
@@ -99,13 +100,13 @@ const styles = StyleSheet.create({
   },
   button: {
     padding: 10,
-    backgroundColor: 'purple',
+    backgroundColor: purple,
     alignSelf: 'center',
     borderRadius: 5,
     margin: 20
   },
   buttonText: {
-    color: 'white',
+    color: white,
     fontSize: 20
   }
 })

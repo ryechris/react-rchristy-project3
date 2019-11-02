@@ -3,7 +3,7 @@
   "expoServerPort": null,
   "packagerPort": null,
   "packagerPid": null,
-  "expoServerNgrokUrl": null,
-  "packagerNgrokUrl": null,
-  "ngrokPid": null
+  "expoServerNgrokUrl": "https://xa-p67.anonymous.mobileflashcards.exp.direct",
+  "packagerNgrokUrl": "https://packager.xa-p67.anonymous.mobileflashcards.exp.direct",
+  "ngrokPid": 3556
 }

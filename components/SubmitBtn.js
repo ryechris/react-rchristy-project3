@@ -1,5 +1,6 @@
 import React from 'react'
 import { Platform, TouchableOpacity, Text, StyleSheet } from 'react-native'
+import { white, purple } from '../utils/colors'
 
 export default function SubmitBtn ({ onPress }) {
   return (
@@ -13,7 +14,7 @@ export default function SubmitBtn ({ onPress }) {
 
 const styles = StyleSheet.create({
   iosSubmitBtn: {
-    backgroundColor: 'purple',
+    backgroundColor: purple,
     padding: 10,
     borderRadius: 7,
     height: 45,
@@ -21,7 +22,7 @@ const styles = StyleSheet.create({
     marginRight: 40
   },
   androidSubmmitBtn: {
-    backgroundColor: 'purple',
+    backgroundColor: purple,
     padding: 10,
     paddingLeft: 30,
     paddingRight: 30,
@@ -31,7 +32,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   submitBtnText: {
-    color: 'white',
+    color: white,
     fontSize: 22,
     textAlign: 'center'
   }

@@ -8,6 +8,7 @@ import {
 import { connect } from 'react-redux'
 import { fetchDecks, deleteDeck } from '../utils/api'
 import { receiveEntries, deleteEntry } from '../actions'
+import { black, purple, white } from '../utils/colors'
 
 const Deck = ({ navigation, dispatch }) => {
   const { deckTitle, deckLength, updateDecks } = navigation.state.params
@@ -77,17 +78,17 @@ const styles = StyleSheet.create({
   },
   button: {
     padding: 10,
-    backgroundColor: 'purple',
+    backgroundColor: purple,
     alignSelf: 'center',
     borderRadius: 5,
     marginBottom: 20
   },
   buttonText: {
-    color: 'white',
+    color: white,
     fontSize: 20
   },
   btnText: {
-    color: 'black',
+    color: black,
     marginTop: 50,
     marginBottom: 40
   }
